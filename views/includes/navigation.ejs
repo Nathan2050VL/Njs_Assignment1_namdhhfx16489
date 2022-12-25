@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" >Staff Manager</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <% if (!isManager) { %>
+                    <a class="nav-link <%= path === '/' ? 'active' : '' %>" aria-current="page" href="/">Điểm Danh</a>
+                    <a class="nav-link <%= path === '/staff' ? 'active' : '' %>" href="/staff">Thông Tin Nhân Viên</a>
+                    <a class="nav-link <%= path === '/work' ? 'active' : '' %>" href="/work">Thông Tin Giờ Làm</a>
+                <% } %>
+                <% if (isManager) { %>
+                    <a class="nav-link <%= path === '/manager' ? 'active' : '' %>" href="/manager">Quản Lý Giờ Làm Nhân Viên</a>
+                <% } %>
+                <a class="nav-link <%= path === '/covid' ? 'active' : '' %>" href="/covid">Thông Tin Covid</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <% if (!isAuthenticated) { %>
+                    <a class="nav-link <%= path === '/login' ? 'active' : '' %>" href="/login">Đăng Nhập</a>
+                <% } else { %>
+                    <form action="/logout" method="post" class="nav-link <%= path === '/logout' ? 'active' : '' %>">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="nav-link btn-logout"type="submit">Đăng Xuất</button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</nav>

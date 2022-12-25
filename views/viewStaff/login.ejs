@@ -1,0 +1,27 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <h2 class="text-center mt-3">Đăng nhập</h2>
+        <div class="card p-5 m-auto mt-3" style="max-width: 800px;">
+            <form class="form-login" action="/login" method="post">
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Nhập email..." value="<%= oldInput.email %>">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Mật khẩu</label>
+                  <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu..." value="<%= oldInput.password %>">
+                </div>
+                <% if (errorMessage) { %>
+                  <div id="emailHelp" class="form-text text-danger mb-3"><%= errorMessage %></div>
+                <% } %>
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+              </form>
+        </div>
+    </main>
+
+<%- include('../includes/end.ejs') %>
