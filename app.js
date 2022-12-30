@@ -106,17 +106,17 @@ app.use((error, req, res, next) => {
     });
 });
 
-/* mongoose
+ mongoose
     .connect(MONGODB_URI)
     .then((result) => {
         app.listen(process.env.PORT || 8080, "0.0.0.0", () => {
             console.log("Server is running");
         });
     })
-    .catch((err) => console.log(err)); */
-mongoose
+    .catch((err) => console.log(err)); 
+/*mongoose
     .connect(MONGODB_URI)
     .then(result => {
         app.listen(8000)
     })
-    .catch(err => console.log(err))
+    .catch(err => console.log(err))*/
